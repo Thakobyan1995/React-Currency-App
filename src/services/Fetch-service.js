@@ -1,6 +1,5 @@
 // this class uses Singleton Pattern
 
-
 class FetchService {
 
     static instance = null;
