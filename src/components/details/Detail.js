@@ -4,9 +4,9 @@ import Loading from '../loading/Loading';
 import renderChangePercent from '../../helpers/renderChangePercent';
 import './Detail.css';
 
-class Details extends React.Component {
-    constructor() {
-        super();
+class Details extends React.PureComponent {
+    constructor(props) {
+        super(props);
         this.state = {
             loading: true,
             currency: {}
@@ -20,6 +20,12 @@ class Details extends React.Component {
             currency: response,
             loading: false
         })
+    }
+
+    componentDidUpdate(prevProps) {
+      if(prevProps.match.params.id !== this.props.match.params.id) {
+        this.getCurrency()
+      }
     }
 
     componentDidMount() {
