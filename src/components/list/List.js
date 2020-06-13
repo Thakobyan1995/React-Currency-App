@@ -3,6 +3,7 @@ import fetchServise from '../../services/Fetch-service';
 import Table from './Table';
 import Pagination from '../pagination/pagination';
 import Loading from '../loading/Loading';
+import CurrenciesContext from '../../../src/context/currencies'
 import './Table.css';
 
 class List extends React.Component {
@@ -49,16 +50,14 @@ class List extends React.Component {
               </div>)
         }
         return (
-          <>
-            <Table 
-              currencies={currencies} 
-            />
+          <CurrenciesContext.Provider value={currencies}>
+            <Table />
             <Pagination 
               handlePaginationClick={this.handlePaginationClick}
               totalPages={totalPages}
               page={page}
             />
-          </>
+          </CurrenciesContext.Provider>
         )
     }
 }
